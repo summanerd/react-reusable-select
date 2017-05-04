@@ -1,0 +1,31 @@
+{
+  "name": "react-reusable-select",
+  "version": "0.0.1",
+  "description": "Fancy select component built with react",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:summanerd/react-select.git"
+  },
+  "keywords": [
+    "select",
+    "select",
+    "component",
+    "react",
+    "dropdown",
+    "react",
+    "select",
+    "dropdown",
+    "dropdown",
+    "component"
+  ],
+  "author": "SummaNerd Services LLC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/summanerd/react-select/issues"
+  },
+  "homepage": "https://github.com/summanerd/react-select"
+}
