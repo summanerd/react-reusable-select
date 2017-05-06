@@ -4,7 +4,7 @@
   "description": "Fancy select component built with react",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "NODE_ENV=test karma start"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,42 @@
     "dropdown",
     "component"
   ],
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-1": "^6.22.0",
+    "css-loader": "^0.26.2",
+    "enzyme": "^2.7.1",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "foundation-sites": "^6.3.1",
+    "istanbul-instrumenter-loader": "^2.0.0",
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.5.0",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-junit-reporter": "^1.2.0",
+    "karma-safari-launcher": "^1.0.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-webpack": "^2.0.2",
+    "node-sass": "^4.5.0",
+    "react-addons-test-utils": "^15.4.2",
+    "sass-loader": "^6.0.2",
+    "style-loader": "^0.13.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "d3": "^4.8.0",
+    "jquery": "^3.1.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
   "author": "SummaNerd Services LLC",
   "license": "MIT",
   "bugs": {

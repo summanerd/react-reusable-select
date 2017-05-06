@@ -1,0 +1,36 @@
+
+.select{
+    $selectHighlight: lightgray;
+    $selectLabelPadding: 10px;
+
+
+    &__label{
+        padding: $selectLabelPadding;
+
+        &:hover{
+            background-color: $selectHighlight;
+        }
+
+    }
+
+    &__options{
+        display: none;
+        margin: 0;
+        padding: 0;
+
+        &--is-open{
+            display: block;
+        }
+    }
+
+    &__option{
+
+        &--is-active{
+            background-color: $selectHighlight;
+        }
+    }
+
+    &__option-label{
+        padding: $selectLabelPadding;
+    }
+}
