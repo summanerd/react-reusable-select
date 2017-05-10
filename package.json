@@ -1,6 +1,6 @@
 {
   "name": "react-reusable-select",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Fancy select component built with react",
   "main": "index.js",
   "scripts": {
