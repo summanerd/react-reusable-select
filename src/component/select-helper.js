@@ -17,12 +17,12 @@ function SelectOption({option, selectedValues, onSelect, classes = []}) {
     const isSelected = selectedValues.indexOf(option.value) > -1;
 
     if (isSelected) {
-        classes.push('select__label--is-active');
+        classes = [].concat(classes, ['select__option--is-active']);
     }
 
     return (
         <div className={classes.join(' ')} data-action="select" onClick={()=> onSelect(option)}>
-            <a href="#" onClick={ev=> ev.preventDefault()}>
+            <a className="select__option-label" href="#" onClick={ev=> ev.preventDefault()}>
                 {option.label}
             </a>
         </div>
@@ -79,7 +79,6 @@ function getSelectedOptions(options, selectedValues) {
     let i = 0;
 
     while (i < options.length) {
-        console.log('index', i)
         const option = options[i++];
         if (selectedValues.indexOf(option.value) > -1){
             return [option];

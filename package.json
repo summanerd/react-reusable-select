@@ -4,7 +4,8 @@
   "description": "Fancy select component built with react",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test karma start"
+    "test": "NODE_ENV=test karma start",
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -53,10 +54,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
-    "d3": "^4.8.0",
-    "jquery": "^3.1.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react": "^15.4.2"
   },
   "author": "SummaNerd Services LLC",
   "license": "MIT",

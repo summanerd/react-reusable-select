@@ -1,0 +1,28 @@
+.select {
+  width: 100%;
+  border: 1px solid darkgray;
+  background-color: #dedede; }
+  .select__toggle {
+    width: 100%; }
+  .select__label {
+    text-align: center;
+    padding: 10px; }
+    .select__label:hover {
+      background-color: lightgray; }
+  .select__options {
+    display: none;
+    margin: 0;
+    padding: 0; }
+    .select__options--is-open {
+      display: block; }
+  .select__option {
+    border: 1px solid gray;
+    border-top: none;
+    background-color: #fefefe;
+    list-style: none; }
+    .select__option--is-active {
+      background-color: lightgray; }
+  .select__option-label {
+    display: block;
+    padding: 10px;
+    text-decoration: none; }

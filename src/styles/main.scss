@@ -2,9 +2,19 @@
 .select{
     $selectHighlight: lightgray;
     $selectLabelPadding: 10px;
+    width: 100%;
+    border: 1px solid darkgray;
+    background-color: #dedede;
+
+
+    &__toggle{
+        width: 100%;
+
+    }
 
 
     &__label{
+        text-align: center;
         padding: $selectLabelPadding;
 
         &:hover{
@@ -24,6 +34,10 @@
     }
 
     &__option{
+        border: 1px solid gray;
+        border-top: none;
+        background-color: #fefefe;
+        list-style: none;
 
         &--is-active{
             background-color: $selectHighlight;
@@ -31,6 +45,8 @@
     }
 
     &__option-label{
+        display: block;
         padding: $selectLabelPadding;
+        text-decoration: none;
     }
 }

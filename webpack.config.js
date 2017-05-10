@@ -5,24 +5,27 @@ const extractSass = new ExtractTextPlugin({
     filename: "[name].css",
     disable: false//process.env.NODE_ENV === "development"
 });
-const BUILD_DIR = path.resolve(__dirname, 'public');
+const BUILD_DIR = path.resolve(__dirname, 'dist');
 const SRC_DIR = path.resolve(__dirname, 'src');
 const STYLE_DIR = path.resolve(__dirname, 'src/styles');
 const APP_DIR = path.resolve(__dirname, 'src/component');
 const FOUNDATION_DIR = path.resolve(__dirname, 'node_modules/foundation-sites');
 
 
+
 const config = {
     devServer: { inline: true },
     entry: [
         // 'webpack-dev-server/client?http://localhost:8080/',
-        './index.js',
-        path.resolve(__dirname, 'src/styles/main.scss')
+        path.resolve(__dirname, 'src/styles/main.scss'),
+        './main.js'
     ],
     output: {
-        path: BUILD_DIR + '/js',
-        filename: 'main.js',
-        publicPath: '/assets'
+        path: path.resolve(__dirname, './'),
+        filename: 'index.js',
+        library: 'react-reusable-select',
+        libraryTarget: 'umd',
+        // umdNamedDefine: true
     },
     module: {
         rules: [
@@ -42,9 +45,7 @@ const config = {
                         loader: "css-loader"
                     }, {
                         loader: "sass-loader",
-                        options: {
-                            includePaths: [FOUNDATION_DIR + '/scss']
-                        }
+                        options: {}
                     }],
                     // use style-loader in development
                     fallback: "style-loader",
@@ -53,10 +54,14 @@ const config = {
             }
         ]
     },
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
     plugins: [
         extractSass
     ],
     externals: {
+        'react': true,
         'react/addons': true,
         'react/lib/ExecutionEnvironment': true,
         'react/lib/ReactContext': true

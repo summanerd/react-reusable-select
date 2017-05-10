@@ -52,7 +52,10 @@ export default function getSelectComponent(options = {}){
 
             return(
                 <div className={selectClasses.join(' ')} data-state={this.state.isOpen ? 'open' : 'closed'} data-component="select">
-                    <button className={toggleClasses.join(' ')} data-action="toggle" onClick={this.toggleDropDown}>
+                    <button className={toggleClasses.join(' ')} data-action="toggle" onClick={ev=>{
+                        ev.preventDefault();
+                        this.toggleDropDown();
+                    }}>
                         <SelectLabel label={this.label} classes={labelClasses} />
                     </button>
                     <ul className={optionsClasses.join(' ')} data-region="select-options">
