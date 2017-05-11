@@ -1,6 +1,6 @@
 {
   "name": "react-reusable-select",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Fancy select component built with react",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:summanerd/react-select.git"
+    "url": "git@github.com:summanerd/react-reusable-select.git"
   },
   "keywords": [
     "select",
@@ -32,7 +32,6 @@
     "css-loader": "^0.26.2",
     "enzyme": "^2.7.1",
     "extract-text-webpack-plugin": "^2.1.0",
-    "foundation-sites": "^6.3.1",
     "istanbul-instrumenter-loader": "^2.0.0",
     "jasmine-core": "^2.5.2",
     "karma": "^1.5.0",
@@ -47,6 +46,7 @@
     "karma-webpack": "^2.0.2",
     "node-sass": "^4.5.0",
     "react-addons-test-utils": "^15.4.2",
+    "react-test-renderer": "^15.5.4",
     "sass-loader": "^6.0.2",
     "style-loader": "^0.13.2",
     "webpack": "^2.2.1",
@@ -54,12 +54,13 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
-    "react": "^15.4.2"
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   },
   "author": "SummaNerd Services LLC",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/summanerd/react-select/issues"
+    "url": "https://github.com/summanerd/react-reusable-select/issues"
   },
-  "homepage": "https://github.com/summanerd/react-select"
+  "homepage": "https://github.com/summanerd/react-reusable-select"
 }

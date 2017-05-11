@@ -10,6 +10,15 @@ webpackConfig.module.rules.forEach(function (loader) {
     }
     loader.include = [SRC_DIR, TEST_DIR + '/src'];
 });
+webpackConfig.output = {
+    filename: webpackConfig.output.filename,
+    path: webpackConfig.output.path
+};
+webpackConfig.externals = {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+};
 webpackConfig.devtool = 'inline-source-map';
 
 module.exports = function (config) {
@@ -94,8 +103,8 @@ module.exports = function (config) {
             'karma-coverage',
             'karma-webpack',
             'karma-chrome-launcher',
-            'karma-firefox-launcher',
-            'karma-safari-launcher',
+            // 'karma-firefox-launcher',
+            // 'karma-safari-launcher',
             // 'karma-junit-reporter'
         ],
 
