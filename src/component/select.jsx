@@ -51,7 +51,11 @@ export default function getSelectComponent(options = {}){
             }
 
             return(
-                <div className={selectClasses.join(' ')} data-state={this.state.isOpen ? 'open' : 'closed'} data-component="select">
+                <div className={selectClasses.join(' ')}
+                     data-state={this.state.isOpen ? 'open' : 'closed'}
+                     data-component="select"
+                     ref={el=> this.selectNode = el}
+                >
                     <button className={toggleClasses.join(' ')} data-action="toggle" onClick={ev=>{
                         ev.preventDefault();
                         this.toggleDropDown();

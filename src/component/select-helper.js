@@ -21,11 +21,15 @@ function SelectOption({option, selectedValues, onSelect, classes = []}) {
     }
 
     return (
-        <div className={classes.join(' ')} data-action="select" onClick={()=> onSelect(option)}>
+        <li className={classes.join(' ')} 
+            data-select-value={option.value} 
+            data-action="select" 
+            onClick={()=> onSelect(option)}
+        >
             <a className="select__option-label" href="#" onClick={ev=> ev.preventDefault()}>
                 {option.label}
             </a>
-        </div>
+        </li>
     );
 
 }
@@ -49,7 +53,7 @@ function onSelectOption(option) {
 function onToggleOpen() {
 
     const listener = onClickOutsideOfSelect.bind(this);
-    document.addEventListener('click', listener, {once: true});
+    document.addEventListener('click', listener);
     this.removeBodyClickListener = ()=> document.removeEventListener('click', listener);
 
 }
@@ -66,8 +70,11 @@ function onToggleClose() {
 }
 
 function onClickOutsideOfSelect(event) {
-    
-    if (this.selectNode.querySelector(event.target)) {
+
+    if (!this.selectNode){
+        return;
+    }
+    if (this.selectNode.contains(event.target)) {
         return;
     }
     delete this.removeBodyClickListener;

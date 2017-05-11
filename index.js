@@ -126,10 +126,14 @@ function SelectOption(_ref) {
     }
 
     return _react2.default.createElement(
-        'div',
-        { className: classes.join(' '), 'data-action': 'select', onClick: function onClick() {
+        'li',
+        { className: classes.join(' '),
+            'data-select-value': option.value,
+            'data-action': 'select',
+            onClick: function onClick() {
                 return onSelect(option);
-            } },
+            }
+        },
         _react2.default.createElement(
             'a',
             { className: 'select__option-label', href: '#', onClick: function onClick(ev) {
@@ -161,7 +165,7 @@ function onSelectOption(option) {
 function onToggleOpen() {
 
     var listener = onClickOutsideOfSelect.bind(this);
-    document.addEventListener('click', listener, { once: true });
+    document.addEventListener('click', listener);
     this.removeBodyClickListener = function () {
         return document.removeEventListener('click', listener);
     };
@@ -179,7 +183,10 @@ function onToggleClose() {
 
 function onClickOutsideOfSelect(event) {
 
-    if (this.selectNode.querySelector(event.target)) {
+    if (!this.selectNode) {
+        return;
+    }
+    if (this.selectNode.contains(event.target)) {
         return;
     }
     delete this.removeBodyClickListener;
@@ -324,7 +331,13 @@ function getSelectComponent() {
 
                 return _react2.default.createElement(
                     'div',
-                    { className: selectClasses.join(' '), 'data-state': this.state.isOpen ? 'open' : 'closed', 'data-component': 'select' },
+                    { className: selectClasses.join(' '),
+                        'data-state': this.state.isOpen ? 'open' : 'closed',
+                        'data-component': 'select',
+                        ref: function ref(el) {
+                            return _this2.selectNode = el;
+                        }
+                    },
                     _react2.default.createElement(
                         'button',
                         { className: toggleClasses.join(' '), 'data-action': 'toggle', onClick: function onClick(ev) {
@@ -395,6 +408,8 @@ function getSelectComponent() {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SingleSelect", function() { return SingleSelect; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MultiSelect", function() { return MultiSelect; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_component_select_jsx__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_component_select_jsx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__src_component_select_jsx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_component_single_select_single_select__ = __webpack_require__(6);
@@ -402,8 +417,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_component_multi_select_multi_select__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_component_multi_select_multi_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__src_component_multi_select_multi_select__);
 /* harmony reexport (default from non-hamory) */ __webpack_require__.d(__webpack_exports__, "Select", function() { return __WEBPACK_IMPORTED_MODULE_0__src_component_select_jsx___default.a; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SingleSelect", function() { return SingleSelect; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MultiSelect", function() { return MultiSelect; });
 
 
 
@@ -430,7 +443,7 @@ const SingleSelect = __WEBPACK_IMPORTED_MODULE_1__src_component_single_select_si
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.default = getSingleSelect;
+exports.default = getMultiSelect;
 
 var _react = __webpack_require__(0);
 
@@ -444,9 +457,18 @@ var _select2 = _interopRequireDefault(_select);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function getSingleSelect() {
+function getMultiSelect() {
 
-    var Select = (0, _select2.default)();
+    var Select = (0, _select2.default)({
+        onSelectOption: function onSelectOption(option) {
+            var isCurrentlySelected = this.selectedValues.indexOf(option.value) > -1,
+                selected = isCurrentlySelected ? this.state.selected.filter(function (_option) {
+                return _option.value !== option.value;
+            }) : this.state.selected.slice().concat([option]);
+
+            this.setState({ selected: selected });
+        }
+    });
 
     return function MultiSelect(props) {
         var _props = (0, _selectHelper.getCleanProps)(props);
